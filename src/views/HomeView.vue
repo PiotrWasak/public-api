@@ -2,10 +2,13 @@
 import EntryTable from '@/components/EntryTable.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { useEntriesStore } from '@/stores/entries'
+import { storeToRefs } from 'pinia'
 
-const { getEntries, fetchEntries } = useEntriesStore()
+const entriesStore = useEntriesStore()
 
-fetchEntries()
+const { getEntries } = storeToRefs(entriesStore)
+
+entriesStore.fetchEntries();
 </script>
 
 <template>
@@ -18,7 +21,7 @@ fetchEntries()
 <style lang="scss">
 .entries {
   &__loading-spinner {
-    margin: 
+    margin: 80px;
   }
 }
 </style>
