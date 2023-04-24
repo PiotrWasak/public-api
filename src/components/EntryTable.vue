@@ -1,11 +1,28 @@
 <script setup lang="ts">
 import type { Entry } from '@/types';
+import { computed } from 'vue';
 
 interface Props {
-    entries: Entry[]
+    entries: Entry[];
+    pagesCount: number;
+    currentPage: number;
 }
 
-defineProps<Props>();
+const emit = defineEmits<{
+  (e: 'changePage', page: number): void
+}>()
+
+const props = defineProps<Props>();
+
+const page = computed({
+  get() {
+    return props.currentPage;
+  },
+  set(newValue) {
+    emit("changePage", newValue)
+  }
+})
+
 
 </script>
 
@@ -39,6 +56,8 @@ defineProps<Props>();
       </tr>
     </tbody>
   </v-table>
+
+  <v-pagination :length="pagesCount" v-model="page"></v-pagination>
 </template>
 
 
