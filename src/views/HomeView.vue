@@ -3,7 +3,6 @@ import EntryTable from '@/components/EntryTable.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import { useEntriesStore } from '@/stores/entries'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
 
 const entriesStore = useEntriesStore()
 
@@ -11,9 +10,7 @@ const { getEntries, pagesCount, currentPage } = storeToRefs(entriesStore)
 
 entriesStore.fetchEntries()
 
-const handlePageChange = (newPage: number) => {
-  entriesStore.setPage(newPage);
-}
+const handlePageChange = (newPage: number) => (entriesStore.setPage(newPage));
 </script>
 
 <template>
