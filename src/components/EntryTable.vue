@@ -22,11 +22,6 @@ const page = computed({
     emit("changePage", newValue)
   }
 })
-
-console.log(Object.keys(props.entries[0]));
-
-
-
 </script>
 
 <template>
@@ -41,7 +36,7 @@ console.log(Object.keys(props.entries[0]));
     <tbody>
       <tr
         v-for="entry in entries"
-        :key="entry.API"
+        :key="entry.Link"
       >
         <td v-for="(element, index) in entry" :key="index">{{ element || 'No' }}</td>
       </tr>

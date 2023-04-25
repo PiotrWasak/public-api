@@ -19,7 +19,7 @@
   &__slogan {
     margin: 0 40px;
     font-size: 24px;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.7);
   }
 }
 </style>
