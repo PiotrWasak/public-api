@@ -25,10 +25,10 @@ const page = computed({
 </script>
 
 <template>
-  <v-table>
+  <v-table class="entry-table">
     <thead>
       <tr>
-        <th v-for="header in Object.keys(props.entries[0])" :key="header">
+        <th class="entry-table__header" v-for="header in Object.keys(props.entries[0])" :key="header">
           {{ header }}
         </th>
       </tr>
@@ -37,6 +37,7 @@ const page = computed({
       <tr
         v-for="entry in entries"
         :key="entry.Link"
+        class="entry-table__row"
       >
         <td v-for="(element, index) in entry" :key="index">{{ element || 'No' }}</td>
       </tr>
@@ -47,6 +48,14 @@ const page = computed({
 </template>
 
 
-<style scoped>
-
+<style lang="scss">
+.entry-table {
+  &__header {
+    // Overwrite vuetify style
+    font-weight: 700 !important
+  }
+  &__row:nth-child(odd) {
+    background-color: rgba(240, 240, 240, 0.8)
+  }
+}
 </style>

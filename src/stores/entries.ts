@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { API_ENDPOINTS, type CategoryResponse, type Entry, type Filters } from '@/types'
+import { API_ENDPOINTS, type CategoryResponse, type EntriesResponse, type Entry, type Filters } from '@/types'
 import { httpClient } from '@/api-client'
 
 export const useEntriesStore = defineStore('entries', () => {
@@ -28,7 +28,7 @@ export const useEntriesStore = defineStore('entries', () => {
   const fetchEntries = async (filters?: Filters) => {
     entriesLoading.value = true
     entries.value = (
-      await httpClient.get(API_ENDPOINTS.ENTRIES, {
+      await httpClient.get<EntriesResponse>(API_ENDPOINTS.ENTRIES, {
         params: {
           ...filters
         }

@@ -33,6 +33,7 @@ watchDebounced(
         clearable
         v-model="filters.title"
         label="Title"
+        @keydown.escape="filters.title=''"
       ></v-text-field>
     <v-select v-model="filters.category" label="Category" :items="categories"></v-select>
   </div>
