@@ -23,6 +23,9 @@ const page = computed({
   }
 })
 
+console.log(Object.keys(props.entries[0]));
+
+
 
 </script>
 
@@ -30,17 +33,8 @@ const page = computed({
   <v-table>
     <thead>
       <tr>
-        <th class="text-left">
-          Name
-        </th>
-        <th class="text-left">
-          Description
-        </th>
-        <th class="text-left">
-          Category
-        </th>
-        <th class="text-left">
-          Link
+        <th v-for="header in Object.keys(props.entries[0])" :key="header">
+          {{ header }}
         </th>
       </tr>
     </thead>
@@ -49,10 +43,7 @@ const page = computed({
         v-for="entry in entries"
         :key="entry.API"
       >
-        <td>{{ entry.API}}</td>
-        <td>{{ entry.Description }}</td>
-        <td>{{ entry.Category }}</td>
-        <td>{{ entry.Link }}</td>
+        <td v-for="(element, index) in entry" :key="index">{{ element || 'No' }}</td>
       </tr>
     </tbody>
   </v-table>

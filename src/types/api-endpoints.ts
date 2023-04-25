@@ -1,3 +1,4 @@
 export enum API_ENDPOINTS {
-    ENTRIES = "entries"
+    ENTRIES = "entries",
+    CATEGORIES = "categories"
 }
