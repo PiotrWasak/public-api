@@ -54,8 +54,5 @@ const page = computed({
     // Overwrite vuetify style
     font-weight: 700 !important
   }
-  &__row:nth-child(odd) {
-    background-color: rgba(240, 240, 240, 0.8)
-  }
 }
 </style>

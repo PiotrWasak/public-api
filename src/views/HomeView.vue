@@ -18,15 +18,15 @@ entriesStore.fetchCategories();
 <template>
   <div class="entries">
     <FilterBar v-if="categories" :categories="categories" @filter-change="entriesStore.fetchEntries"></FilterBar>
+    <LoadingSpinner class="entries__loading-spinner" v-if="entriesLoading"></LoadingSpinner>
     <EntryTable
-      v-if="getEntries"
+      v-else-if="getEntries"
       :entries="getEntries"
       :pages-count="pagesCount"
       :current-page="currentPage"
       @change-page="entriesStore.setPage"
     ></EntryTable>
-    <div v-else-if="!entriesLoading && !getEntries" class="entries__no-data">No entries found.</div>
-    <LoadingSpinner class="entries__loading-spinner" v-else></LoadingSpinner>
+    <div v-else class="entries__no-data">No entries found.</div>
   </div>
 </template>
 
